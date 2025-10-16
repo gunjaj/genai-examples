@@ -11,7 +11,7 @@ This project demonstrates how to expose a `/chat` endpoint behind your web or ap
 ## Prerequisites
 - AWS account with access to Bedrock and Lambda
 - AWS CLI and [AWS CDK](https://docs.aws.amazon.com/cdk/latest/guide/getting_started.html) installed
-- Node.js and Python 3.11+
+- Node.js and Python 3.10+
 - Bedrock model access enabled for `amazon.nova-micro-v1:0`
 
 ## Getting Started
@@ -20,10 +20,10 @@ This project demonstrates how to expose a `/chat` endpoint behind your web or ap
 Request access to the Bedrock model `amazon.nova-micro-v1:0` in the AWS Console if not already enabled.
 
 ### 2. Deploy Infrastructure
-1. Install dependencies:
+1. Navigate to infrastructure directory and install dependencies:
    ```sh
+   cd infrastructure
    pip install -r requirements.txt
-   pip install -r requirements-dev.txt
    npm install -g aws-cdk
    ```
 2. Deploy the stack:
@@ -62,15 +62,26 @@ To expose the Lambda as a REST endpoint, add an API Gateway resource in your CDK
 ## Cleanup
 To remove all resources:
 ```sh
+cd infrastructure
 cdk destroy InfrastructureStack --profile $AWS_PROFILE
 ```
 
 ## Project Structure
-- `infrastructure/` — CDK app and infrastructure code
-- `src/lambda/handler.py` — Lambda function code
-- `requirements.txt` — Python dependencies for Lambda
-- `requirements-dev.txt` — Dev dependencies for CDK
-- `tests/` — Unit tests for infrastructure
+```
+chatstack/
+├── infrastructure/          # CDK app and infrastructure code
+│   ├── infrastructure/      # CDK stack definitions
+│   ├── app.py              # CDK app entry point
+│   ├── cdk.json            # CDK configuration
+│   ├── requirements.txt    # CDK dependencies
+│   └── requirements-dev.txt # CDK dev dependencies
+├── src/
+│   └── lambda/
+│       ├── handler.py      # Lambda function code
+│       └── requirements.txt # Lambda dependencies
+├── .gitignore              # Git ignore rules
+└── README.md               # This file
+```
 
 ## Customization
 - Swap out the Bedrock model or prompt for your use case

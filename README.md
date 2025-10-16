@@ -39,6 +39,23 @@ Before running any examples in this repository, you need to set up your AWS envi
   ```
 - You are now ready to use the AWS CLI and SDKs with your SSO-authenticated profile.
 
+### 6. Setup Budgets & Billing
+- In the AWS Console, search for **Budgets**.
+- Enable:
+  - Billing Preferences - Invoice and Alert preferences
+  - Cost Explorer - Daily granularity 
+- Create a monthly budget
+  - Scope: All services, mothly, recurring
+    - Set up alerts to notify you when your costs exceed a certain threshold.
+- Tag-based cost allocation
+  - Billing - Cost allocation tags
+  - Activate tags used to identify the resources. You will see the tags after you create a resource and tag it. Costs will be shown by tags after activation.
+
+### 7. Enable and Configure Bedrock models
+- In Bedrock console → Model access, request access for the models you’ll use (e.g., Claude, Titan, Mistral).
+- In Bedrock → Model invocation logging, enable logs to CloudWatch Logs.
+
+
 ## Example Structure
 
 Each example in this repository is organized in its own subdirectory, with clear instructions and code samples. Examples may include:

@@ -1,0 +1,64 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.Python
+*.egg-info/
+.pytest_cache/
+.venv/
+venv/
+env/
+ENV/
+dist/
+build/
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# AWS CDK
+cdk.out/
+.cdk.staging/
+
+# AWS SAM
+.aws-sam/
+
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+
+# IDE
+.vscode/
+.idea/
+.DS_Store
+*.swp
+*.swo
+
+# Environment & Secrets
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+config.json
+
+# Logs
+*.log
+logs/
+
+# Test outputs
+response.json
+output/
+temp/
+
+# Models & Data
+*.pkl
+*.joblib
+models/
+data/
+datasets/
+
+# OS
+Thumbs.db

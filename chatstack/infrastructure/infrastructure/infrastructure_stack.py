@@ -13,9 +13,10 @@ from aws_cdk.aws_apigatewayv2_integrations import HttpLambdaIntegration
 
 class InfrastructureStack(Stack):
 
-    def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
+    def __init__(self, scope: Construct, construct_id: str, guardrail_id: str, guardrail_version: str, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
 
+        guardrail_arn = f"arn:aws:bedrock:*:*:guardrail/{guardrail_id}"
         # Define IAM role for Lambda function. Add Bedrock permissions.
         lambda_role = iam.Role(self, "LambdaExecutionRole",
             assumed_by=iam.ServicePrincipal("lambda.amazonaws.com"),
@@ -28,11 +29,15 @@ class InfrastructureStack(Stack):
                         iam.PolicyStatement(
                             actions=[
                                 "bedrock:InvokeModel",
-                                "bedrock:Converse",
-                                "bedrock:InvokeModelWithResponseStream",
-                                "bedrock:ConverseWithResponseStream",
                             ],
                             resources=["arn:aws:bedrock:*:*:foundation-model/*"]
+                        ),
+                        iam.PolicyStatement(
+                            actions=[
+                                "bedrock:ApplyGuardrail",
+                                "bedrock:GetGuardrail",
+                            ],
+                            resources=[guardrail_arn]
                         )
                     ]
                 )
@@ -49,9 +54,12 @@ class InfrastructureStack(Stack):
             timeout=Duration.seconds(30),
             environment={
                 "MODEL_ID": "amazon.nova-micro-v1:0",
-                "REGION": self.region
+                "REGION": self.region,
+                "GUARDRAIL_ID": guardrail_id,
+                "GUARDRAIL_VERSION": guardrail_version
             }, 
         )
+
         Tags.of(lambda_function).add("example", "chatstack")
         CfnOutput(self, "LambdaFunctionName", value=lambda_function.function_name)
 

@@ -65,6 +65,10 @@ def lambda_handler(event, context):
                 'maxTokens': max_tokens,
                 'temperature': temperature,
                 'topP': top_p
+            },
+            'guardrailConfig':{
+                "guardrailIdentifier": os.environ["GUARDRAIL_ID"],
+                "guardrailVersion": os.environ["GUARDRAIL_VERSION"]
             }
         }
 

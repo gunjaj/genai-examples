@@ -261,14 +261,14 @@ Open `http://localhost:8501` in your browser and test with these queries:
 ![image info](./images/MovieSummary-DataFound.png)
 
 #### Data not found in database for movie
-![image info](./images/MovieSummary-DataNotFound.png)
+![image info](./images/MovieSummary-NoDataFound.png)
 
 ### Review Sentiment Queries (Routes to "reviews" namespace)
 #### Data found for movie in database
 ![image info](./images/MovieReview-DataFound.png)
 
 #### Data not found in database for movie
-![image info](./images/MovieReview-DataNotFound.png)
+![image info](./images/MovieReview-NoDataFound.png)
 
 ### Debugging Tips
 - Check CloudWatch logs for Lambda functions to see namespace routing decisions

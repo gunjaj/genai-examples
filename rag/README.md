@@ -257,26 +257,18 @@ Open `http://localhost:8501` in your browser and test with these queries:
 ## 6. Testing Examples
 
 ### Movie Plot Queries (Routes to "movies" namespace)
-```
-Query: "Tell me about a movie plot"
-Expected Namespace: movies
-Response: Plot summary with setting, characters, and main conflicts
+#### Data found for movie in database
+![image info](./images/MovieSummary-DataFound.png)
 
-Query: "What happens in this movie?"
-Expected Namespace: movies  
-Response: Narrative summary of the movie storyline
-```
+#### Data not found in database for movie
+![image info](./images/MovieSummary-DataNotFound.png)
 
 ### Review Sentiment Queries (Routes to "reviews" namespace)
-```
-Query: "What do people think about this movie?"
-Expected Namespace: reviews
-Response: Sentiment analysis based on user reviews
+#### Data found for movie in database
+![image info](./images/MovieReview-DataFound.png)
 
-Query: "How do users rate this film?"
-Expected Namespace: reviews
-Response: Rating insights from user feedback
-```
+#### Data not found in database for movie
+![image info](./images/MovieReview-DataNotFound.png)
 
 ### Debugging Tips
 - Check CloudWatch logs for Lambda functions to see namespace routing decisions

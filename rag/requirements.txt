@@ -1,0 +1,5 @@
+aws_cdk.asset_node_proxy_agent_v6==2.1.0
+aws_cdk_asset_awscli_v1==2.2.242
+aws_cdk_cloud_assembly_schema==48.15.0
+aws_cdk_lib==2.215.0
+datasets==4.2.0
